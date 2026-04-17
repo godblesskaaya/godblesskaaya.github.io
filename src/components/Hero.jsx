@@ -31,14 +31,14 @@ export default function Hero() {
               <div className="flex items-center gap-3 mb-8">
                 <div className="h-px w-8 bg-[#fed136]" />
                 <p className="text-gray-400 text-base font-medium tracking-wide">
-                  Graphic Designer &amp; CS Student
+                  Final-Year CS @ UDSM · Full-Stack Developer
                 </p>
               </div>
             </motion.div>
 
             <motion.p {...fadeUp(0.42)} className="text-gray-500 text-base leading-relaxed max-w-md mb-10">
-              Creating visuals and building code from Dar es Salaam, Tanzania.
-              Passionate about fintech, blockchain, and design-driven experiences.
+              Cross-sector experience in financial services, ISP operations, and enterprise software.
+              Building full-stack systems from Dar es Salaam, Tanzania.
             </motion.p>
 
             <motion.div {...fadeUp(0.52)} className="flex flex-wrap gap-4">
@@ -46,14 +46,13 @@ export default function Hero() {
                 href="#projects"
                 className="px-7 py-3 bg-[#fed136] text-[#050d1f] font-bold rounded-lg hover:bg-[#e8c520] transition-colors text-sm"
               >
-                View Work
+                View Projects
               </a>
               <a
-                href="/sanekobeCv.pdf"
-                download
+                href="#contact"
                 className="px-7 py-3 border border-[#fed136]/50 text-[#fed136] font-bold rounded-lg hover:bg-[#fed136]/10 hover:border-[#fed136] transition-all text-sm"
               >
-                Download CV
+                Get in Touch
               </a>
             </motion.div>
           </div>

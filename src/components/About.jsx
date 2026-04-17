@@ -3,28 +3,27 @@ import { motion, useInView } from 'framer-motion'
 
 const timeline = [
   {
-    year: '2009 – 2015',
-    title: 'Primary School',
-    place: 'St. Jude School, Arusha',
-    desc: 'Foundation years in Arusha, Tanzania.',
-  },
-  {
-    year: '2016 – 2022',
-    title: 'Secondary School',
+    year: '2016 – 2019',
+    title: 'Certificate of Secondary Education',
     place: 'Jude Secondary School',
-    desc: 'O-level & A-level — Physics, Chemistry, Advanced Mathematics.',
   },
   {
-    year: '2022 – 2023',
+    year: '2020 – 2022',
+    title: 'Advanced Certificate (PCM)',
+    place: 'Jude Secondary School',
+    desc: 'Physics, Chemistry, Advanced Mathematics.',
+  },
+  {
+    year: 'Oct 2022 – Jun 2023',
     title: 'National Service & Teaching',
-    place: 'Tanzania',
-    desc: 'Completed national service and taught physics & chemistry.',
+    place: 'Akeri Secondary School',
+    desc: 'Taught Chemistry and Physics to ~400 students.',
   },
   {
-    year: '2023 – 2026',
+    year: '2023 – Present',
     title: 'BSc Computer Science',
-    place: 'University of Dar es Salaam',
-    desc: 'Pursuing my degree with a focus on fintech, blockchain, and web development.',
+    place: 'University of Dar es Salaam (UDSM)',
+    desc: 'Final year. Focus on full-stack engineering, networking, and IT systems.',
     current: true,
   },
 ]
@@ -60,13 +59,13 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             <p className="text-gray-300 text-lg leading-relaxed mb-5">
-              I'm a Graphic Designer and Computer Science student based in Dar es Salaam, Tanzania.
-              With a background spanning illustration, motion graphics, embroidery design, and web design,
-              I bring both artistic vision and technical thinking to every project.
+              Final-year Computer Science undergraduate at UDSM with cross-sector exposure spanning
+              financial services, ISP operations, and enterprise software.
             </p>
             <p className="text-gray-400 text-base leading-relaxed mb-10">
-              I'm currently in my second year at the University of Dar es Salaam, deeply interested in fintech,
-              blockchain technology, and the intersection of design and code.
+              Experienced in IT systems deployment and management, network infrastructure,
+              and IT audit & controls. Thrives on structured problem-solving and communicates
+              technical findings clearly to non-technical stakeholders.
             </p>
 
             <div className="space-y-4">
@@ -74,13 +73,19 @@ export default function About() {
                 { icon: '📍', label: 'Location', value: 'Dar es Salaam, Tanzania' },
                 { icon: '📧', label: 'Email', value: 'godblessgkaaya@gmail.com', href: 'mailto:godblessgkaaya@gmail.com' },
                 { icon: '📞', label: 'Phone', value: '+255 686 475 414', href: 'tel:+255686475414' },
+                { icon: '🐙', label: 'GitHub', value: 'github.com/godblesskaaya', href: 'https://github.com/godblesskaaya' },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
                   <span className="text-lg w-6 shrink-0">{item.icon}</span>
                   <div>
                     <p className="text-gray-600 text-xs uppercase tracking-wider">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="text-gray-300 hover:text-[#fed136] transition-colors text-sm">
+                      <a
+                        href={item.href}
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="text-gray-300 hover:text-[#fed136] transition-colors text-sm"
+                      >
                         {item.value}
                       </a>
                     ) : (
@@ -103,7 +108,7 @@ export default function About() {
                 className="relative pl-8 pb-10 last:pb-0"
               >
                 <div
-                  className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2 transition-colors ${
+                  className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2 ${
                     item.current
                       ? 'bg-[#fed136] border-[#fed136] shadow-[0_0_8px_#fed136]'
                       : 'bg-[#050d1f] border-[#002654]'
@@ -112,7 +117,7 @@ export default function About() {
                 <span className="text-[#fed136] text-xs font-bold tracking-widest uppercase">{item.year}</span>
                 <h3 className="text-white font-bold text-base mt-1">{item.title}</h3>
                 <p className="text-gray-500 text-sm">{item.place}</p>
-                <p className="text-gray-400 text-sm mt-1 leading-relaxed">{item.desc}</p>
+                {item.desc && <p className="text-gray-400 text-sm mt-1 leading-relaxed">{item.desc}</p>}
               </motion.div>
             ))}
           </div>
