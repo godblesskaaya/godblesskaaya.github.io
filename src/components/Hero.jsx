@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
@@ -42,18 +43,18 @@ export default function Hero() {
             </motion.p>
 
             <motion.div {...fadeUp(0.52)} className="flex flex-wrap gap-4">
-              <a
-                href="#projects"
+              <Link
+                to="/projects"
                 className="px-7 py-3 bg-[#fed136] text-[#050d1f] font-bold rounded-lg hover:bg-[#e8c520] transition-colors text-sm"
               >
                 View Projects
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                to="/contact"
                 className="px-7 py-3 border border-[#fed136]/50 text-[#fed136] font-bold rounded-lg hover:bg-[#fed136]/10 hover:border-[#fed136] transition-all text-sm"
               >
                 Get in Touch
-              </a>
+              </Link>
             </motion.div>
           </div>
 

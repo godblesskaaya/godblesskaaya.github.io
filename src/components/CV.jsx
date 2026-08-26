@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const highlights = [
   { label: 'Degree', value: 'BSc Computer Science · UDSM (Final Year)' },
@@ -95,9 +96,9 @@ export default function CV() {
 
             <p className="text-gray-600 text-xs">
               Or reach out via the{' '}
-              <a href="#contact" className="text-[#fed136]/70 hover:text-[#fed136] transition-colors underline underline-offset-2">
+              <Link to="/contact" className="text-[#fed136]/70 hover:text-[#fed136] transition-colors underline underline-offset-2">
                 contact section
-              </a>
+              </Link>
               .
             </p>
           </motion.div>

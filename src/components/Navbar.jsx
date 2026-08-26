@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link, NavLink } from 'react-router-dom'
 
 const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Business', href: '#business' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'CV', href: '#cv' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Experience', to: '/experience' },
+  { label: 'Projects', to: '/projects' },
+  { label: 'Research', to: '/research' },
+  { label: 'Contact', to: '/contact' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ solid = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -29,23 +27,25 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#050d1f]/95 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-transparent'
+        scrolled || solid ? 'bg-[#050d1f]/95 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
-        <a href="#home" className="text-[#fed136] font-black text-2xl tracking-tight">
+        <Link to="/" className="text-[#fed136] font-black text-2xl tracking-tight">
           GK.
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-gray-400 hover:text-[#fed136] transition-colors duration-200"
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) => `text-sm font-medium transition-colors duration-200 ${
+                isActive ? 'text-[#fed136]' : 'text-gray-400 hover:text-[#fed136]'
+              }`}
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </div>
 
@@ -71,14 +71,16 @@ export default function Navbar() {
             className="md:hidden bg-[#050d1f]/98 backdrop-blur-md border-t border-[#002654]/50"
           >
             {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <NavLink
+                key={link.to}
+                to={link.to}
                 onClick={() => setOpen(false)}
-                className="block px-6 py-3.5 text-gray-400 hover:text-[#fed136] hover:bg-[#002654]/20 transition-all text-sm font-medium"
+                className={({ isActive }) => `block px-6 py-3.5 hover:bg-[#002654]/20 transition-all text-sm font-medium ${
+                  isActive ? 'text-[#fed136]' : 'text-gray-400 hover:text-[#fed136]'
+                }`}
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </motion.div>
         )}

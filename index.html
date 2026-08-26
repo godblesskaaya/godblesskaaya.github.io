@@ -2,6 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      const savedRoute = sessionStorage.getItem('portfolio-route')
+      if (savedRoute) {
+        sessionStorage.removeItem('portfolio-route')
+        const route = new URL(savedRoute)
+        window.history.replaceState(null, '', `${route.pathname}${route.search}${route.hash}`)
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Godbless Kaaya — Graphic Designer & Computer Science Student based in Dar es Salaam, Tanzania." />
     <meta name="google-site-verification" content="0AZik-trEo-XZwyObYi1uVJ4iJNxv4jVay2MAKNZzVQ" />
